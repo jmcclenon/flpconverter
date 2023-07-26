@@ -1,4 +1,10 @@
 import xml.etree.ElementTree as ET
+import logging
+
+# Set up logging
+logging.basicConfig(filename='convert.log', level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(message)s')
+
 
 def convert_fpl_to_fms(fpl_filename, fms_filename):
     """
@@ -17,29 +23,30 @@ def convert_fpl_to_fms(fpl_filename, fms_filename):
     root = tree.getroot()
 
     # Find all waypoints in the .flp file
-    waypoints = root.findall('.//ATCCreateFlightPlan/FlightPlan/Waypoints/Waypoint')
+    waypoints = root.findall(
+        './/ATCCreateFlightPlan/FlightPlan/Waypoints/Waypoint')
+    logging.info("Found %s waypoints", len(waypoints))
 
     # Open the .fms file for writing
     with open(fms_filename, 'w') as fms_file:
-        # Write the header to the .fms file
-        # The second line specifies the version of the .fms file format (3 in this case)
-        # The third and fourth lines are required by the .fms file format but their meaning is unclear
-        # The fourth line seems to be the number of waypoints minus 1
         fms_file.write("I\n3 version\n1\n{}\n".format(len(waypoints) - 1))
 
-        # For each waypoint in the .flp file
         for i, waypoint in enumerate(waypoints):
-            # Extract the identifier, latitude, longitude, and altitude of the waypoint
             ident = waypoint.find('WaypointIdent').text
             lat = float(waypoint.find('WaypointLat').text)
             lon = float(waypoint.find('WaypointLon').text)
-            alt = float(waypoint.find('WaypointAltitude').text)
 
-            # Write the waypoint to the .fms file
-            # The waypoint type is set to 11 (Fix), as there is no direct mapping from the .flp waypoint type
+            # Check for WaypointAltitude, and use a default value if it doesn't exist
+            altitude = waypoint.find('WaypointAltitude')
+            if altitude is not None:
+                alt = float(altitude.text)
+            else:
+                alt = 0.0
+
+            logging.info(
+                "Writing waypoint to fms: ident=%s, alt=%s, lat=%s, lon=%s", ident, alt, lat, lon)
             fms_file.write("11 {} {} {} {}\n".format(ident, alt, lat, lon))
 
-        # Add padding lines until a total of 100 lines have been written
-        # Each padding line has the waypoint type set to 0 (unused) and the identifier set to "----"
         for i in range(len(waypoints), 100):
+            logging.info("Writing padding line to fms")
             fms_file.write("0 ---- 0.000000 0.000000 0.000000\n")

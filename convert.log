@@ -1,0 +1,129 @@
+2023-07-26 13:03:38,363 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-07-26 13:03:38,363 INFO [33mPress CTRL+C to quit[0m
+2023-07-26 13:03:46,529 INFO 127.0.0.1 - - [26/Jul/2023 13:03:46] "GET / HTTP/1.1" 200 -
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,891 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,892 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,893 INFO Writing padding line to fms
+2023-07-26 13:03:55,894 INFO Writing padding line to fms
+2023-07-26 13:03:55,894 INFO Writing padding line to fms
+2023-07-26 13:03:55,894 INFO Writing padding line to fms
+2023-07-26 13:03:55,894 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,895 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,896 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,897 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,898 INFO Writing padding line to fms
+2023-07-26 13:03:55,899 INFO Writing padding line to fms
+2023-07-26 13:03:55,899 ERROR Exception on / [POST]
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marsj\fplconverter\app\main.py", line 26, in index
+    return send_file(output_filepath, as_attachment=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\flask\helpers.py", line 504, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\werkzeug\utils.py", line 427, in send_file
+    stat = os.stat(path)
+           ^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\marsj\\fplconverter\\app\\uploads\\KORD.fms'
+2023-07-26 13:03:55,902 INFO 127.0.0.1 - - [26/Jul/2023 13:03:55] "[35m[1mPOST / HTTP/1.1[0m" 500 -
