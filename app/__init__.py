@@ -6,7 +6,7 @@ def create_app():
     Bootstrap(app)
 
     # Secret key for CSRF protection
-    app.config['SECRET_KEY'] = 'Your secret key'
+    app.config['SECRET_KEY'] = '3b3533dacf63f08d6fa69d8e36c89cxx'
 
     # Import and register blueprint
     from .main import main as main_blueprint

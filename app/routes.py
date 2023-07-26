@@ -1,5 +1,5 @@
 from flask import Blueprint, request, send_file
-from .convert import convert_flp_to_fms
+from .convert import convert_fpl_to_fms
 import os
 
 main = Blueprint('main', __name__)
@@ -20,7 +20,7 @@ def convert():
         file.save(filepath)
         
         # Convert the file
-        output_path = convert_flp_to_fms(filepath)
+        output_path = convert_fpl_to_fms(filepath)
         
         # Send the converted file
         return send_file(output_path, as_attachment=True)

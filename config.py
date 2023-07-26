@@ -1,7 +1,7 @@
 class Config(object):
     DEBUG = False
     TESTING = False
-    SECRET_KEY = 'this-should-be-changed'
+    SECRET_KEY = '3b3533dacf63f08d6fa69d8e36c89cxx'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
 
 

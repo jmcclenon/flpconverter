@@ -8,9 +8,9 @@ import xml.etree.ElementTree as ET
 app = Flask(__name__)
 Bootstrap(app)
 
-app.config['UPLOAD_FOLDER'] = '/path/to/upload/folder'
-app.config['ALLOWED_EXTENSIONS'] = {'flp'}
-app.secret_key = "your-secret-key"  # Replace with your actual secret key
+app.config['UPLOAD_FOLDER'] = '/app/uploads'
+app.config['ALLOWED_EXTENSIONS'] = {'fpl'}
+app.secret_key = "3b3533dacf63f08d6fa69d8e36c89cxx"  # Replace with your actual secret key
 
 def allowed_file(filename):
     return '.' in filename and \

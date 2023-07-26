@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, render_template, request, send_file
 from werkzeug.utils import secure_filename
-from .convert import convert_flp_to_fms
+from .convert import convert_fpl_to_fms
 
 main = Blueprint('main', __name__)
 
@@ -18,9 +18,9 @@ def index():
             filepath = os.path.join('uploads', filename)
             file.save(filepath)
 
-            # convert the .flp file to .fms
+            # convert the .fpl file to .fms
             output_filepath = os.path.join('uploads', filename.rsplit('.', 1)[0] + '.fms')
-            convert_flp_to_fms(filepath, output_filepath)
+            convert_fpl_to_fms(filepath, output_filepath)
 
             # return the .fms file for download
             return send_file(output_filepath, as_attachment=True)

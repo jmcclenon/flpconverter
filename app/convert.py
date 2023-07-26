@@ -1,11 +1,11 @@
 import xml.etree.ElementTree as ET
 
-def convert_flp_to_fms(flp_filename, fms_filename):
+def convert_fpl_to_fms(fpl_filename, fms_filename):
     """
-    This function converts a .flp flight plan file to a .fms file.
+    This function converts a .fpl flight plan file to a .fms file.
 
     Parameters:
-    flp_filename (str): The path to the input .flp file.
+    fpl_filename (str): The path to the input .flp file.
     fms_filename (str): The path to the output .fms file.
 
     Returns:
@@ -13,7 +13,7 @@ def convert_flp_to_fms(flp_filename, fms_filename):
     """
 
     # Parse the .flp file using the xml.etree.ElementTree library
-    tree = ET.parse(flp_filename)
+    tree = ET.parse(fpl_filename)
     root = tree.getroot()
 
     # Find all waypoints in the .flp file
