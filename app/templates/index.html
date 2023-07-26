@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="container">
-    <h1>FPL to FMS Converter</h1>
-    <p>Select a .fpl file to convert it to a .fms file. The converted file will be automatically downloaded when the conversion is complete.</p>
+    <h1>FLP to FMS Converter</h1>
+    <p>Select a .flp file to convert it to a .fms file. The converted file will be automatically downloaded when the conversion is complete.</p>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <div class="alert alert-{{ 'success' if 'successfully' in messages[0] else 'danger' }}">
@@ -13,7 +13,7 @@
     {% endwith %}
     <form method=post enctype=multipart/form-data id="upload-form">
         <div class="form-group">
-            <label for="file">Choose .fpl file</label>
+            <label for="file">Choose .flp file</label>
             <input type="file" class="form-control-file" id="file" name="file">
         </div>
         <button type="submit" class="btn btn-primary">Upload</button>
@@ -24,32 +24,44 @@
         </div>
     </div>
     <div id="message" class="mt-3"></div>
+
+    <!-- Add the switch for toggling dark mode -->
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="darkSwitch">
+      <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+    </div>
 </div>
+
+<!-- Add the JavaScript for toggling dark mode -->
 <script>
 document.getElementById('upload-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var formData = new FormData(e.target);
-    document.getElementById('loading').style.display = 'block';
+    // ...
+});
 
-    fetch('/', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('loading').style.display = 'none';
-        var messageElement = document.getElementById('message');
-        if (data.success) {
-            messageElement.textContent = 'File uploaded successfully.';
-            messageElement.className = 'alert alert-success';
-        } else {
-            messageElement.textContent = 'File upload failed.';
-            messageElement.className = 'alert alert-danger';
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
+// Dark mode toggle logic
+window.addEventListener('load', () => {
+    const darkSwitch = document.getElementById('darkSwitch');
+    initTheme();
+
+    darkSwitch.addEventListener('change', () => { 
+        resetTheme();
     });
+
+    function initTheme() {
+        const darkThemeSelected = (localStorage.getItem('darkSwitch') !== null && localStorage.getItem('darkSwitch') === 'dark');
+        darkSwitch.checked = darkThemeSelected;
+        darkThemeSelected ? document.body.setAttribute('data-theme', 'dark') : document.body.removeAttribute('data-theme');
+    };
+
+    function resetTheme() {
+        if(darkSwitch.checked) {
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('darkSwitch', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
+            localStorage.removeItem('darkSwitch');
+        } 
+    };
 });
 </script>
 {% endblock %}
