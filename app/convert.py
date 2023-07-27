@@ -1,52 +1,50 @@
 import xml.etree.ElementTree as ET
-from flask import flash, redirect, request
 import logging
 
+# Set up logging
+logging.basicConfig(filename='convert.log', level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(message)s')
 
 def convert_fpl_to_fms(fpl_filename, fms_filename):
+    """
+    This function converts a .fpl flight plan file to a .fms file.
+
+    Parameters:
+    fpl_filename (str): The path to the input .flp file.
+    fms_filename (str): The path to the output .fms file.
+
+    Returns:
+    None
+    """
+
     # Parse the .flp file using the xml.etree.ElementTree library
+    namespace = {'ns': 'http://www8.garmin.com/xmlschemas/FlightPlan/v1'}
     try:
         tree = ET.parse(fpl_filename)
+        root = tree.getroot()
     except ET.ParseError:
-        flash('Failed to parse the file. Is it a well-formed XML document?')
-        return redirect(request.url)
-
-    root = tree.getroot()
+        logging.error('Failed to parse the file. Is it a well-formed XML document?')
+        return
 
     # Find all waypoints in the .flp file
-    waypoints = root.findall(
-        './/ATCCreateFlightPlan/FlightPlan/Waypoints/Waypoint')
+    waypoints = root.findall('.//ns:waypoint-table/ns:waypoint', namespace)
     logging.info("Found %s waypoints", len(waypoints))
-
-    for waypoint in waypoints:
-        ident = waypoint.find('WaypointIdent').text
-        lat = float(waypoint.find('WaypointLat').text)
-        lon = float(waypoint.find('WaypointLon').text)
-        logging.info(f"Waypoint: ident={ident}, lat={lat}, lon={lon}")
 
     # Open the .fms file for writing
     with open(fms_filename, 'w') as fms_file:
         fms_file.write("I\n3 version\n1\n{}\n".format(len(waypoints) - 1))
 
         for i, waypoint in enumerate(waypoints):
-            ident = waypoint.find('WaypointIdent').text
-            lat = float(waypoint.find('WaypointLat').text)
-            lon = float(waypoint.find('WaypointLon').text)
+            ident = waypoint.find('ns:identifier', namespace).text
+            lat = float(waypoint.find('ns:lat', namespace).text)
+            lon = float(waypoint.find('ns:lon', namespace).text)
 
-            # Check for WaypointAltitude, and use a default value if it doesn't exist
-            altitude = waypoint.find('WaypointAltitude')
-            if altitude is not None:
-                alt = float(altitude.text)
-            else:
-                alt = 0.0
-
-            # Convert altitude to feet if it's in meters
-            # alt = alt * 3.28084 # Uncomment this line if altitude is in meters in .fpl file
+            # No altitude data in the .fpl file, so we'll use a default value
+            alt = 0.0
 
             logging.info(
                 "Writing waypoint to fms: ident=%s, alt=%s, lat=%s, lon=%s", ident, alt, lat, lon)
-            # Write lon, lat, alt instead of alt, lat, lon
-            fms_file.write("11 {} {} {} {}\n".format(ident, lon, lat, alt))
+            fms_file.write("11 {} {} {} {}\n".format(ident, alt, lat, lon))
 
         for i in range(len(waypoints), 100):
             logging.info("Writing padding line to fms")

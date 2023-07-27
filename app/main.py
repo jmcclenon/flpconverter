@@ -1,56 +1,64 @@
 import os
 import logging
-from flask import Flask, request, redirect, send_file, flash, render_template
+from flask import Blueprint, render_template, request, send_file, flash, redirect
 from werkzeug.utils import secure_filename
-from app.convert import convert_fpl_to_fms
+from .convert import convert_fpl_to_fms
 
-UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'fpl'}
+main = Blueprint('main', __name__)
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'supersecretkey'
 
-# Set up logging
-logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/', methods=['GET', 'POST'])
+@main.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # check if the post request has the file part
+        # Check if the post request has the file part
         if 'file' not in request.files:
-            flash('No file part')
+            flash('No file part in the request')
             return redirect(request.url)
+
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
+
+        # If the user does not select a file, the browser submits an empty file
         if file.filename == '':
-            flash('No selected file')
+            flash('No file selected')
             return redirect(request.url)
+
+        # Check if the file has the correct extension
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-            logging.info(f"Uploaded file saved to {filepath}")
 
-            # Try to convert the file
+            # Make sure the 'uploads' directory exists
+            os.makedirs('uploads', exist_ok=True)
+
+            # Save the file in the 'uploads' directory
+            filepath = os.path.join('uploads', filename)
+            file.save(filepath)
+
+            # Convert the .fpl file to .fms
+            output_filepath = os.path.join(
+                'uploads', filename.rsplit('.', 1)[0] + '.fms')
             try:
-                output_filename = f"{os.path.splitext(filename)[0]}.fms"
-                output_filepath = os.path.join(app.config['UPLOAD_FOLDER'], output_filename)
                 convert_fpl_to_fms(filepath, output_filepath)
-                flash('File successfully converted.')
                 logging.info(f"Converted {filepath} to {output_filepath}")
-                return send_file(output_filepath, as_attachment=True)
             except Exception as e:
                 logging.error(f"Failed to convert {filepath}: {e}")
-                flash('An error occurred during conversion.')
+                flash('Failed to convert the file.')
                 return redirect(request.url)
+
+            flash('File successfully converted.')
+
+            # Get the absolute path of the output file
+            output_filepath_abs = os.path.abspath(output_filepath)
+
+            # Return the .fms file for download
+            return send_file(output_filepath_abs, as_attachment=True)
+
+        flash('Invalid file type')
+        return redirect(request.url)
 
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'fpl'}
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
