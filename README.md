@@ -20,19 +20,19 @@ fplconverter is a web application built with Flask to convert flight plan files 
 
 Clone the repository:
 
-```
+```text
 git clone https://github.com/jmcclenon/fplconverter.git
 ```
 
 Change into the cloned repository:
 
-```
+```text
 cd fplconverter
 ```
 
 Create a virtual environment:
 
-```
+```text
 python3 -m venv venv
 ```
 
@@ -40,25 +40,25 @@ Activate the virtual environment:
 
 On Unix or MacOS, run:
 
-```
+```text
 source venv/bin/activate
 ```
 
 On Windows, run:
 
-```
+```text
 .\venv\Scripts\activate
 ```
 
 Install the required packages:
 
-```
+```text
 pip install -r requirements.txt
 ```
 
 Run the application:
 
-```
+```text
 flask run
 ```
 
@@ -75,7 +75,3 @@ To use fplconverter:
 ## Contributing
 
 We welcome contributions! Please see the issues section to find something you'd like to work on. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
